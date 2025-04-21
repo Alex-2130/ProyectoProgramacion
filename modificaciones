@@ -19,3 +19,154 @@ public void setName(String name) {
                 ex.getMessage();
             }
         }
+
+
+//clase valoracion
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Users;
+
+import excepciones.BadNumeroEstrellas;
+
+/**
+ *
+ * @author Mañana
+ */
+public class Valoracion {
+    protected double estrellas;
+    protected String comentario;
+    protected Usuario usuario;
+
+    public Valoracion(double estrellas, String comentario, Usuario usuario) {
+        setEstrellas(estrellas);
+        this.comentario = comentario;
+        this.usuario = usuario;
+    }
+
+    public double getEstrellas() {
+        return estrellas;
+    }
+
+    public void setEstrellas(double estrellas) {
+        try{
+            if (estrellas < 0 || estrellas > 5) throw new BadNumeroEstrellas();
+            else this.estrellas = estrellas;
+        } catch (BadNumeroEstrellas ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+}
+
+
+//Clase categoria
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package izv.proyectoprogramacion;
+
+import Users.Valoracion;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Mañana
+ */
+public abstract class Categoria implements Buscador, AñadirReseña{
+    
+    protected String name;
+    protected String decripcion;
+    protected String transporte;
+//    protected Ubicacion ubicacion;
+    protected ArrayList<Valoracion> reseñas;
+    protected boolean entrada;
+    protected double mediaValoraciones;
+
+    public Categoria(String name, String decripcion, String transporte,
+            Boolean entrada) {
+        this.name = name;
+        this.decripcion = decripcion;
+        this.transporte = transporte;
+        this.entrada = entrada;
+        setMediaValoraciones();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDecripcion() {
+        return decripcion;
+    }
+
+    public void setDecripcion(String decripcion) {
+        this.decripcion = decripcion;
+    }
+
+    public String getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(String transporte) {
+        this.transporte = transporte;
+    }
+
+    public ArrayList<Valoracion> getReseñas() {
+        return reseñas;
+    }
+
+    public void setReseñas(ArrayList<Valoracion> reseñas) {
+        this.reseñas = reseñas;
+    }
+
+    public boolean getEntrada() {
+        return entrada;
+    }
+
+    public void setEntrada(boolean entrada) {
+        this.entrada = entrada;
+    }
+
+    public double getMediaValoraciones() {
+        return mediaValoraciones;
+    }
+
+    public void setMediaValoraciones() {
+        double suma = 0;
+        
+        for (Valoracion reseña : reseñas) {
+            suma += reseña.getEstrellas();
+        }
+        
+        this.mediaValoraciones = suma/reseñas.size();
+    }
+
+    @Override
+    public void añadirReseña(Valoracion nuevaReseña){
+        reseñas.add(nuevaReseña);
+    }
+    
+}
