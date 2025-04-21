@@ -1,0 +1,21 @@
+//con esto quitamos el play de la interfaz grafica
+Prueba1 pantalla = new Prueba1();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+
+
+//setter name añadir tambien en el constructor la llamada
+public void setName(String name) {
+        try {
+            if (name == null || name.isEmpty())throw new BadNameException();
+            for (int i = 0; i < name.length(); i++) {
+                if (Character.isDigit(name.charAt(i)))
+                    throw new BadNameException();
+            }
+            
+            this.name = name;
+            
+            } catch (BadNameException ex) {
+                ex.getMessage();
+            }
+        }
