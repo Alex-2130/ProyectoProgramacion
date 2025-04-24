@@ -319,7 +319,7 @@ public abstract class Categoria implements Buscador, AñadirReseña{
         this.decripcion = decripcion;
         this.transporte = transporte;
         this.entrada = entrada;
-        setMediaValoraciones();
+        reseñas = new ArrayList<>();
     }
 
     public String getName() {
@@ -367,18 +367,25 @@ public abstract class Categoria implements Buscador, AñadirReseña{
     }
 
     public void setMediaValoraciones() {
-        double suma = 0;
-        
-        for (Valoracion reseña : reseñas) {
-            suma += reseña.getEstrellas();
+        if (reseñas.isEmpty())  {
+            this.mediaValoraciones = 0;
+        } else {
+            double suma = 0;
+            for (Valoracion reseña : reseñas) {
+                suma += reseña.getEstrellas();
+            }
+
+            this.mediaValoraciones = suma / reseñas.size();
         }
-        
-        this.mediaValoraciones = suma/reseñas.size();
     }
 
     @Override
     public void añadirReseña(Valoracion nuevaReseña){
         reseñas.add(nuevaReseña);
+        //aqui llamo a la funcion para que vaya haciendo la media segun se meten
+        //las nuevas reseñas
+        setMediaValoraciones();
     }
     
 }
+
