@@ -6,6 +6,7 @@ public static void main(String[] args) {
         addOcio();
         addEvento();
         addPinteres();
+        addRuta();
     }
 public static void addGui() {
         Prueba1 pantalla = new Prueba1();
