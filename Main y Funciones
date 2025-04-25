@@ -259,3 +259,45 @@ public static void addGui() {
                 "Acceso mediante transporte público", true);
         
     }
+ public static void addRuta() {
+        Ruta ruta1 = new Ruta("550 metros", "10:00 - 12:00 17:00 - 20:00",
+                "Andando", "Palacio Olvidos: 2014, Carvajales: "
+                + "1961 y San Nicolas: 1525", "Museo y miradores",
+                "Alhambra, Sierra nevada, Paseo de los tristes y ciudad antigua",
+                "Ruta Turística Albayzín", "En esta ruta veremos el "
+                + "museo de la inquisición, las maravillosas calles que "
+                + "componen el albayzín y las preciosas vistas que nos "
+                + "ofrence los miradores de Granada", "Accesible"
+                + " mediante transporte público cercanías",
+                true);
+
+        Ruta ruta2 = new Ruta("200 metros", "10:00 - 12:00 "
+                + "17:00 - 20:00", "Andando", "Zoco: 1460, "
+                + "Palacio de la Madraza: 1349", "Mercado y Palacio",
+                "Casco antiguo", "Ruta Turística comercios", "En"
+                + " esta ruta contemplamos unas preciosas vistas de las "
+                + "calles antiguas originarias del siglo XV",
+                "Accesible mediante transporte públic", false);
+
+        Ruta ruta3 = new Ruta("9,45 Km",
+                "Comienzo: 9:00 - 11:00", "Andando",
+                "No especificada", "Senderismo", "Paisaje natural",
+                "Cahorros Monachil",
+                "Un paraje de caprichosas esculturas naturales, creadas "
+                + "por las crecidas de la cuenca fluvial, que han excavado"
+                + " cuevas, bóvedas, paredes y formaciones rocosas a lo "
+                + "largo del tiempo.", "Accesible mediante linea de bus "
+                + "o vehículo personal", false);
+
+        Ruta ruta4 = new Ruta("11,82 Km", "Comienzo: 9:00 - 11:00",
+                 "Ciclismo o andando", "No especificado",
+                "Senderismo", "Paisaje natural", "Valle de Lecrín",
+                "El Valle de Lecrín se encuentra en una zona privilegiada"
+                + " de la Península, a los pies de Sierra Nevada, con la Alpujarra"
+                + " a un paso, a veinte minutos de la Costa Tropical, y a otros "
+                + "veinte de Granada Capital convirtiéndose así en una "
+                + "zona excepcional en cuanto a posibilidades de ocio y "
+                + "turismo activo.", "Accesible mediante linea de"
+                + " bus o vehiculo personal, solo cercanías",
+                false);
+    }
