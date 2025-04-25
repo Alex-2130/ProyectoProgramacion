@@ -1,0 +1,97 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Users;
+
+import excepciones.ContraseñaIncorrecta;
+import excepciones.CorreoElectronicoIncorrecto;
+import java.util.Objects;
+
+/**
+ *
+ * @author Mañana
+ */
+public class Usuario {
+    protected String nombreUsuario;
+    protected String contraseña;
+    protected String correo;
+
+    public Usuario(String nombreUsuario, String contraseña, String correo) {
+        this.nombreUsuario = nombreUsuario;
+        setContraseña(contraseña);
+        setCorreo(correo);
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        boolean contraseñaCorrecta = false;
+        
+        if (contraseña.length() >= 8 && contraseña.contains(".*[A-Z].*") &&
+                contraseña.contains(".*[a-z].*") && contraseña.contains(".*[0-9].*")
+                && contraseña.contains(".*[-_].*")) contraseñaCorrecta = true;
+        
+        try{
+            if (contraseñaCorrecta) this.contraseña = contraseña;
+            else throw new ContraseñaIncorrecta();
+        } catch (ContraseñaIncorrecta ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        try{
+            //Verifico que haya un solo @, comprobando si hay @ y luego cogiendo 
+            //el primer y último ídice donde lo encuentra. Verifico que no esté
+            // en primera ni última posición. Y por último verifico que acaba en
+            //".es" o ".com"
+            if(correo.contains("@") && 
+                    correo.indexOf("@") == correo.lastIndexOf("@") && 
+                    correo.charAt(0) != '@' && 
+                    correo.charAt(correo.length()-1) != '@' && 
+                    (correo.endsWith(".es") || correo.endsWith(".com")))
+                this.correo = correo;
+            else throw new CorreoElectronicoIncorrecto();
+        } catch (CorreoElectronicoIncorrecto ex){
+            System.out.println(ex.getMessage());
+        }
+        
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        return this.nombreUsuario.equalsIgnoreCase(other.nombreUsuario);
+    }
+
+}
