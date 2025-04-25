@@ -1,0 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package izv.proyectoprogramacion;
+
+import excepciones.BadDistancia;
+
+/**
+ *
+ * @author Mañana
+ */
+public class Ruta extends PuntoDeInteres{
+    
+    protected double distancia;
+    protected String horarioRecomendado;
+    protected String movilidad;
+
+    public Ruta(String name, String decripcion, String transporte, 
+            boolean entrada, String añoFundacion, String vistas, String tipo,
+            double distancia, String horarioRecomendado, String movilidad) {
+        super(name, decripcion, transporte, entrada, añoFundacion, vistas, tipo);
+        
+        this.horarioRecomendado = horarioRecomendado;
+        this.movilidad = movilidad;
+        setDistancia(distancia);
+    }
+
+    public double isDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(double distancia) {
+        try{
+            if (distancia <= 0.0) throw new BadDistancia();
+            else this.distancia = distancia;
+        } catch (BadDistancia ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public String getHorarioRecomendado() {
+        return horarioRecomendado;
+    }
+
+    public void setHorarioRecomendado(String horarioRecomendado) {
+        this.horarioRecomendado = horarioRecomendado;
+    }
+
+    public String getMovilidad() {
+        return movilidad;
+    }
+
+    public void setMovilidad(String movilidad) {
+        this.movilidad = movilidad;
+    }
+    
+}
