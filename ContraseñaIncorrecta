@@ -1,0 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package excepciones;
+
+/**
+ *
+ * @author Usuario
+ */
+public class ContraseñaIncorrecta extends Exception{
+
+    public ContraseñaIncorrecta() {
+        System.out.println("Contraseña poco segura, debe tener al menos 8 "
+                + "caracteres, una mayuscula y una minuscula y un caracter "
+                + "especial entre '-' o '_'");
+    }
+    
+}
